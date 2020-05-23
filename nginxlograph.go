@@ -182,8 +182,8 @@ func main() {
 	check(err)
 
 	var wg sync.WaitGroup
+	wg.Add(len(r))
 	for _, f := range r {
-		wg.Add(1)
 		go visitsPerDay(dirPath, f.Name(), &wg)
 	}
 	wg.Wait()
